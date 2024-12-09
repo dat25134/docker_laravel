@@ -10,7 +10,7 @@ services:
     restart: unless-stopped
     working_dir: /var/www/html
     volumes:
-      - ./your_path_to_laravel_project:/var/www/html
+      - ./laravel:/var/www/html
     networks:
       - app-network
 
@@ -22,7 +22,7 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - ./your_path_to_laravel_project:/var/www/html
+      - ./laravel:/var/www/html
       - ./nginx/conf.d/:/etc/nginx/conf.d/
       - ./nginx/.htpasswd:/etc/nginx/.htpasswd
     networks:
@@ -34,12 +34,12 @@ services:
     container_name: laravel_db
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: your_mysql_database
-      MYSQL_ROOT_PASSWORD: your_mysql_root_password
-      MYSQL_PASSWORD: your_mysql_password
-      MYSQL_USER: your_mysql_user
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: password123
+      MYSQL_PASSWORD: password123
+      MYSQL_USER: myuser
     volumes:
-      - dbdata:/var/lib/mysql/
+      - dbdata:/var/lib/mysql
     ports:
       - "3306:3306"
     networks:

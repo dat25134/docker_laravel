@@ -20,10 +20,10 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Set working directory
-WORKDIR /var/www
+WORKDIR /var/www/html
 
 # Copy existing application directory
-COPY ./laravel /var/www
+COPY ./laravel /var/www/html
 
 # Change ownership of our applications
-RUN chown -R www-data:www-data /var/www 
+RUN chown -R www-data:www-data /var/www/html 
